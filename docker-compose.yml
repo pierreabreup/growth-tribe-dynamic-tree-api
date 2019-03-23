@@ -1,0 +1,29 @@
+version: '3.5'
+
+services:
+  redis:
+    image: redis:4-alpine
+    restart: unless-stopped
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile-local
+    image: rails5
+    ports:
+      - 3000:3000
+    working_dir: /usr/src/app
+    volumes:
+      - '.:/usr/src/app'
+      - rails5-usrlocal:/usr/local/
+    depends_on:
+      - redis
+    environment:
+      - REDIS_URL=redis://redis:6379/0
+      - REDIS_PROVIDER=REDIS_URL
+
+volumes:
+  rails5-usrlocal:
+
+networks:
+  local:
+
