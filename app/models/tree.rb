@@ -1,0 +1,4 @@
+class Tree < ApplicationRecord
+
+
+end
