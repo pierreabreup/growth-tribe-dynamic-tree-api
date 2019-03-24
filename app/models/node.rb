@@ -27,14 +27,19 @@ class Node < ApplicationRecord
       column_names_recursive_select = column_names.map { |c| 't.'+ c }.join(',')
 
       sql = "
-          WITH RECURSIVE fulltree(#{column_names_initial_select},path) AS
+          WITH RECURSIVE walk_tree_to_deep(#{column_names_initial_select}) AS
           (
-            SELECT #{column_names_initial_select}, name||'' as path from nodes where parent_id = #{node.id}
+            SELECT #{column_names_initial_select} FROM nodes WHERE parent_id = #{node.id}
               UNION ALL
-            SELECT #{column_names_recursive_select}, ft.path||' / '||t.name as path
-              from nodes t, fulltree ft where t.parent_id = ft.id
+            SELECT #{column_names_recursive_select}
+              FROM nodes t, walk_tree_to_deep ft WHERE t.parent_id = ft.id
           )
-          SELECT * from fulltree order by id
+          SELECT * FROM walk_tree_to_deep ORDER BY id
+        "
+
+      find_by_sql(sql)
+    end
+
     def all_ancestors_sql_by_node(node)
       column_names_initial_select   = column_names.join(',')
       column_names_recursive_select = column_names.map { |c| 't.'+ c }.join(',')
