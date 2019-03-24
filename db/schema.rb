@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_23_172128) do
+ActiveRecord::Schema.define(version: 2019_03_24_123339) do
 
   create_table "nodes", force: :cascade do |t|
     t.string "name", null: false
@@ -18,6 +18,8 @@ ActiveRecord::Schema.define(version: 2019_03_23_172128) do
     t.integer "tree_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "depth", default: 0
+    t.index ["depth"], name: "index_nodes_on_depth"
     t.index ["tree_id"], name: "index_nodes_on_tree_id"
   end
 
