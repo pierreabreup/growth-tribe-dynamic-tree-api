@@ -1,0 +1,5 @@
+FactoryBot.define do
+  factory :tree do
+    json_data { '{"id":1,"child":[{"id":4827,"child":[{"id":6717,"child":[{"id":6724,"child":[{"id":2796,"child":[]},{"id":2993,"child":[]}]},{"id":4036,"child":[{"id":4602,"child":[]},{"id":8842,"child":[]}]},{"id":9780,"child":[]},{"id":6547,"child":[{"id":1105,"child":[]},{"id":718,"child":[]},{"id":8841,"child":[]}]}]},{"id":1346,"child":[{"id":273,"child":[]},{"id":2886,"child":[]}]},{"id":958,"child":[{"id":5870,"child":[]},{"id":5560,"child":[]}]},{"id":2914,"child":[{"id":2711,"child":[{"id":2059,"child":[]},{"id":2594,"child":[]}]},{"id":7532,"child":[]},{"id":9798,"child":[{"id":5833,"child":[]},{"id":2010,"child":[]}]}]},{"id":4510,"child":[]}]},{"id":8288,"child":[]},{"id":1012,"child":[{"id":2389,"child":[]},{"id":2381,"child":[]}]},{"id":3796,"child":[]},{"id":2874,"child":[{"id":6767,"child":[{"id":1577,"child":[]},{"id":7922,"child":[{"id":7568,"child":[]},{"id":3889,"child":[]}]},{"id":435,"child":[{"id":8190,"child":[]},{"id":9970,"child":[]}]}]},{"id":3782,"child":[]},{"id":3475,"child":[]},{"id":2778,"child":[]}]},{"id":323,"child":[]}]}' }
+  end
+end

@@ -2,7 +2,9 @@ class Node < ApplicationRecord
   belongs_to :tree
   belongs_to :parent, foreign_key: :parent_id, class_name: 'Node', optional: true
 
-  has_many :children, foreign_key: :parent_id, class_name: 'Node'
+  has_many :children, foreign_key: :parent_id, class_name: 'Node', dependent: :destroy
+
+  validates_presence_of :name, :tree_id
 
   before_create :assign_depth
 
@@ -13,10 +15,12 @@ class Node < ApplicationRecord
     end
 
     def children_preload_hash
-      self.order('depth desc')
-      .limit(1)
-      .pluck(:depth)
-      .first
+      (
+        self.order('depth desc')
+        .limit(1)
+        .pluck(:depth)
+        .first || 0
+      )
       .times
       .inject(:children) { |h| { children: h } }
     end

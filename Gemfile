@@ -13,6 +13,7 @@ gem 'sidekiq'
 gem 'faraday'
 gem 'config'
 gem 'active_model_serializers'
+gem 'tzinfo-data'
 
 gem 'bootsnap', '>= 1.1.0', require: false
 
@@ -26,5 +27,12 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
+group :test do
+  gem 'factory_bot_rails'
+  gem 'rspec-rails'
+  gem 'shoulda-matchers'
+  gem 'database_cleaner'
+end
 
-gem 'tzinfo-data'
+
+
