@@ -35,6 +35,19 @@ class Node < ApplicationRecord
               from nodes t, fulltree ft where t.parent_id = ft.id
           )
           SELECT * from fulltree order by id
+    def all_ancestors_sql_by_node(node)
+      column_names_initial_select   = column_names.join(',')
+      column_names_recursive_select = column_names.map { |c| 't.'+ c }.join(',')
+
+      sql = "
+          WITH RECURSIVE walk_tree_to_root(#{column_names_initial_select}) AS
+          (
+            SELECT #{column_names_initial_select} FROM nodes WHERE id = #{node.id}
+              UNION ALL
+            SELECT #{column_names_recursive_select}
+              FROM nodes t, walk_tree_to_root ft WHERE t.id = ft.parent_id and ft.depth != 0
+          )
+          SELECT * FROM walk_tree_to_root WHERE id != #{node.id} ORDER BY id desc
         "
 
       find_by_sql(sql)

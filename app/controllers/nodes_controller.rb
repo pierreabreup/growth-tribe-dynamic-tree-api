@@ -11,4 +11,8 @@ class NodesController < ApplicationController
     render json: Node.all_descendants_sql_by_node(Node.where(tree_id: params[:tree_id], id: params[:id]).first).pluck(:id)
   end
 
+  def parents_ids
+    render json: Node.all_ancestors_sql_by_node(Node.where(tree_id: params[:tree_id], id: params[:id]).first).pluck(:id)
+  end
+
 end
