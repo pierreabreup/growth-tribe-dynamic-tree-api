@@ -1,16 +1,9 @@
 class TreeSerializer < ActiveModel::Serializer
-  attributes :id, :nodes
+  attributes :id
+
+  has_many :nodes
 
   def nodes
-    object.nodes.where(parent_id: 0).map {|n| node_to_hash(n) }
-  end
-
-  private
-
-  def node_to_hash(node)
-    {
-      id: node.id,
-      children: node.children.map {|n| node_to_hash(n) }
-    }
+    Node.all_descendants(object.nodes.where(parent_id: 0))
   end
 end
