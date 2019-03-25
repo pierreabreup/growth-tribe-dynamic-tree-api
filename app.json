@@ -1,0 +1,17 @@
+{
+  "name": "Dynamic tree api",
+  "description": "This project is a API for tree manipulation from https://random-tree.herokuapp.com/",
+  "keywords": [
+    "challenge",
+    "rails",
+    "tree",
+    "sidekiq"
+  ],
+  "environments": {
+    "test": {
+      "scripts": {
+        "test": "rspec"
+      }
+    }
+  }
+}
