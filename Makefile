@@ -21,4 +21,4 @@ rtest:
 destroy:
 	docker-compose down
 	docker volume rm ${current_dir_name}_rails5-usrlocal
-	docker rmi rails5
+	docker rmi dynamic-tree-api:local
