@@ -37,7 +37,7 @@ Assuming that you have ruby environment in your machine:
 
 
 ## API endpoints
-You can test the API using this Insonomia (https://insomnia.rest/) workspace (https://drive.google.com/file/d/1BX67ezSq4H-5iJx7c0uQlrzlO6NsfZWr/view?usp=sharing). Download it and import into your Insomnia.
+You can test the API using this Insonomia (https://insomnia.rest/) workspace (https://drive.google.com/file/d/1MuiymnRxP-GM9853kbhpzwQTpbFBRXW5/view?usp=sharing). Download it and import into your Insomnia. The Insomnia workspace contains two environments: local and production.
 
 __IMPORTANT:__ in the insonomia requests `GET /trees/:id/nodes/:id`, `GET /trees/:id/nodes/:id/children_ids`, `GET /trees/:id/nodes/:id/parents_ids`, the URL is static because Insonomia doesn't have env var for specific requests (https://support.insomnia.rest/article/43-chaining-requests). When you are testing, edit the URL and replace the static values
 
