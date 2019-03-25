@@ -7,12 +7,12 @@
     "tree",
     "sidekiq"
   ],
+  "addons":[
+    "heroku-redis",
+    "heroku-postgresql"
+  ],
   "environments": {
     "test": {
-      "addons":[
-         "heroku-redis",
-         "heroku-postgresql"
-      ],
       "scripts": {
         "test": "rspec"
       }

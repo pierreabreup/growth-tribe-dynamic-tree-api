@@ -24,4 +24,5 @@ destroy:
 	docker volume rm ${current_dir_name}_postgres-data
 	docker rmi dynamic-tree-api:local
 	docker rmi postgres:latest
+	docker rmi redis:4-alpine
 
