@@ -9,11 +9,14 @@ run:
 down:
 	docker-compose down
 
-rs:
-	docker exec -it rails5-container bash -c "cd */ && rails s"
+rserver:
+	docker exec -it rails5-container bash -c "rails s -b 0.0.0.0"
 
-rc:
-	docker exec -it rails5-container bash -c "cd */ && rails c"
+rconsole:
+	docker exec -it rails5-container bash -c "rails c"
+
+rtest:
+	docker exec -it rails5-container bash -c "rspec"
 
 destroy:
 	docker-compose down
