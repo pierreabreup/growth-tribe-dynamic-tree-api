@@ -15,9 +15,17 @@ services:
     depends_on:
       - redis
       - sidekiq
+      - db
     environment:
       - REDIS_URL=redis://redis:6379/0
       - REDIS_PROVIDER=REDIS_URL
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: myincrediblefakepassword
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
   sidekiq:
     build:
       context: .
@@ -37,6 +45,7 @@ services:
 
 volumes:
   rails5-usrlocal:
+  postgres-data:
 
 networks:
   local:

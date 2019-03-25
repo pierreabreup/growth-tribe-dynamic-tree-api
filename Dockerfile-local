@@ -7,7 +7,7 @@ RUN apk add --update \
   nodejs \
   libxml2-dev \
   libxslt-dev \
-  sqlite-dev \
+  postgresql-dev \
   && rm -rf /var/cache/apk/*
 
 EXPOSE 3000
