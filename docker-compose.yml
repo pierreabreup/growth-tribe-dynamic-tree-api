@@ -5,16 +5,30 @@ services:
     image: redis:4-alpine
     restart: unless-stopped
   app:
-    build:
-      context: .
-      dockerfile: Dockerfile-local
-    image: rails5
+    image: dynamic-tree-api:local
     ports:
       - 3000:3000
     working_dir: /usr/src/app
     volumes:
       - '.:/usr/src/app'
       - rails5-usrlocal:/usr/local/
+    depends_on:
+      - redis
+      - sidekiq
+    environment:
+      - REDIS_URL=redis://redis:6379/0
+      - REDIS_PROVIDER=REDIS_URL
+  sidekiq:
+    build:
+      context: .
+      dockerfile: Dockerfile-local
+    image: dynamic-tree-api:local
+    working_dir: /usr/src/app
+    command: >
+      sh -c "bundle &&
+             bundle exec sidekiq"
+    volumes:
+      - '.:/usr/src/app'
     depends_on:
       - redis
     environment:
