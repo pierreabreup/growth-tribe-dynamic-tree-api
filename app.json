@@ -9,6 +9,10 @@
   ],
   "environments": {
     "test": {
+      "addons":[
+         "heroku-redis",
+         "heroku-postgresql"
+      ],
       "scripts": {
         "test": "rspec"
       }
