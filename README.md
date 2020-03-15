@@ -2,6 +2,11 @@
 
 This project is a API for tree manipulation from https://random-tree.herokuapp.com/. This project is made on Rails 5 + Sidekiq
 
+# What is the project for?
+
+The project was made to help computer programmers who are applying for positions in companies, during the interview process. However, I strongly recommend that you DO NOT COPY THIS WHOLE PROJECT, but try to use it as reference for your solution. I suggest it to you because it is important to show your recruiter how you solve problems in a smart way without doing "copy and paste".
+
+
 # How to use it?
 
 ### With docker
